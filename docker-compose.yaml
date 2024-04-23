@@ -1,6 +1,6 @@
-# networks: 
-#   loki:
-#     driver: bridge
+networks: 
+  loki:
+    driver: bridge
 
 services:
   gerador-log:
@@ -9,6 +9,8 @@ services:
     - "./logs/gerador-log:/logs/gerador-log"
     ports:
     - 8080:5000
+    networks:
+    - loki
   
   promtail:
     image: grafana/promtail
@@ -18,10 +20,14 @@ services:
     - loki
     - gerador-log
     volumes:
-    - "./promtail/config/config.yaml:/etc/promtail/config.yaml"
+    - "./promtail/config.yaml:/etc/promtail/config.yaml"
     - "/var/log:/logs/syslogs"
     - "./logs/gerador-log:/logs/gerador-log"
     - "./promtail/positions:/position"
+    command: 
+    - -config.file=/etc/promtail/config.yaml
+    networks:
+    - loki
 
   loki:
     image: grafana/loki
@@ -30,10 +36,14 @@ services:
     command: 
     - -config.file=/etc/loki/local-config.yaml
     - -print-config-stderr=true
+    networks:
+    - loki
 
   grafana:
     image: grafana/grafana
     ports:
     - 3000:3000
     depends_on:
+    - loki
+    networks:
     - loki
