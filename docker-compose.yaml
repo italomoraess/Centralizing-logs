@@ -20,7 +20,7 @@ services:
     - loki
     - gerador-log
     volumes:
-    - "./promtail/config.yaml:/etc/promtail/config.yaml"
+    - "./promtail/config/config.yaml:/etc/promtail/config.yaml"
     - "/var/log:/logs/syslogs"
     - "./logs/gerador-log:/logs/gerador-log"
     - "./promtail/positions:/position"
