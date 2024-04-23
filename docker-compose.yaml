@@ -23,7 +23,7 @@ services:
     - "./promtail/config/config.yaml:/etc/promtail/config.yaml"
     - "/var/log:/logs/syslogs"
     - "./logs/gerador-log:/logs/gerador-log"
-    - "./promtail/positions:/position"
+  # - "./promtail/positions:/position"
     command: 
     - -config.file=/etc/promtail/config.yaml
     networks:
