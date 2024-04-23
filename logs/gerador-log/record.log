@@ -1,0 +1,29 @@
+2024-04-23 13:57:08,427 DEBUG app MainThread Teste
+2024-04-23 13:57:08,429 ERROR app MainThread Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/app/app.py", line 14, in index
+    log_level = int(request.form['optLogLevel'])
+ValueError: invalid literal for int() with base 10: 'LOG LEVEL'
+2024-04-23 13:57:32,373 ERROR app MainThread Exception on / [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/app/app.py", line 14, in index
+    log_level = int(request.form['optLogLevel'])
+ValueError: invalid literal for int() with base 10: 'LOG LEVEL'
+2024-04-23 13:57:43,491 DEBUG app MainThread Teste
+2024-04-23 14:26:46,753 DEBUG app MainThread Teste
