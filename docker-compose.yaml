@@ -6,34 +6,34 @@ services:
   gerador-log:
     image: fabricioveronez/gerador-log
     volumes: 
-      - "./logs/gerador-log:/logs/gerador-log"
+    - "./logs/gerador-log:/logs/gerador-log"
     ports:
-      - 8080:5000
+    - 8080:5000
   
   promtail:
-    image: grafana/promtail:2.7.5
+    image: grafana/promtail
     ports:
-      - 9080:9080
+    - 9080:9080
     depends_on:
-      - loki
-      - gerador-log
+    - loki
+    - gerador-log
     volumes:
-      - "./promtail/config/config.yaml:/etc/promtail/config.yaml"
-      - "/var/log:/logs/syslogs"
-      - "./logs/gerador-log:/logs/gerador-log"
-      - "./promtail/positions:/position"
+    - "./promtail/config/config.yaml:/etc/promtail/config.yaml"
+    - "/var/log:/logs/syslogs"
+    - "./logs/gerador-log:/logs/gerador-log"
+    - "./promtail/positions:/position"
 
   loki:
-    image: grafana/loki:2.7.5
+    image: grafana/loki
     ports: 
-      - 3100:3100
+    - 3100:3100
     command: 
-      - -config.file=/etc/loki/local-config.yaml
-      - -print-config-stderr=true
+    - -config.file=/etc/loki/local-config.yaml
+    - -print-config-stderr=true
 
   grafana:
     image: grafana/grafana
     ports:
-      - 3000:3000
+    - 3000:3000
     depends_on:
-      - loki
+    - loki
